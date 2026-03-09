@@ -1,1 +1,52 @@
-console.log("Hi Mom!");
+
+// Global Variables
+
+const DEFAULT_USERNAME = 'admin';
+const DEFAULT_PASSWORD = 'admin123';
+
+const API_BASE_URL = 'https://phi-lab-server.vercel.app/api/v1/lab';
+
+let allIssues = [];
+
+let currentTab = 'all';
+
+
+// Login function that runs when the user clicks the "Sign In" button
+const handleLogin = () => {
+  const usernameInput = document.getElementById('username-input');
+  const passwordInput = document.getElementById('password-input');
+
+  const typedUsername = usernameInput.value.trim(); 
+  const typedPassword = passwordInput.value.trim();
+
+
+  const errorBox = document.getElementById('login-error');
+
+
+  if (typedUsername === DEFAULT_USERNAME && typedPassword === DEFAULT_PASSWORD) {
+    errorBox.style.display = 'none';
+
+    const loginPage = document.getElementById('login-page');
+    loginPage.style.setProperty('display', 'none', 'important');
+
+    const issuesPage = document.getElementById('issues-page');
+    issuesPage.style.setProperty('display', 'block', 'important');
+
+    loadAllIssues();
+  } 
+
+  else {
+    errorBox.style.display = 'flex';
+  }
+};
+
+document.addEventListener('keydown', (event) => {
+  
+  if (event.key === 'Enter') {
+    
+    const loginPage = document.getElementById('login-page');
+    if (loginPage.style.display !== 'none') {
+      handleLogin();
+    }
+  }
+});
