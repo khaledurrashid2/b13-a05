@@ -50,3 +50,18 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
+
+//----------------------------------------------
+// Function to display spinner when loading data
+
+const showSpinner = () => {
+  const spinner = document.getElementById('spinner');
+  spinner.style.display = 'flex';
+};
+
+
+const hideSpinner = () => {
+  const spinner = document.getElementById('spinner');
+  spinner.style.display = 'none';
+};
+

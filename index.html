@@ -152,6 +152,7 @@
 
     </style>
 </head>
+
 <body>
     <!-----------Login page------------->
     <div id="login-page" class="page active min-h-screen flex items-center justify-center bg-gray-100" style="display:flex !important;">
@@ -201,7 +202,114 @@
     </div>
     </div>
 
-   
+    <!-- Loading Spinner  -->
+    <div id="spinner" class="spinner-overlay" style="display:none;">
+        <span class="loading loading-spinner loading-lg text-indigo-600"></span>
+    </div> 
+
+
+    <!-- Main Page -->
+    <div id="issues-page" class="page min-h-screen bg-gray-200">
+
+        <!-- Navbar  -->
+        <nav class="bg-white shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+
+                <!-- Github logo and title -->
+                <div class="flex items-center gap-3">
+                    <img src="assets/github-logo.png" alt="" class="w-8">
+                    <h2 class="text-xl font-bold">Github Issue Tracker</h2>
+                </div>
+
+                <!-- Search box and button -->
+                <div class="flex items-center gap-3">
+                    <!-- Search input with icon -->
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+                        <input type="text" id="search-input" class="input input-bordered w-64 pl-10" placeholder="Search issues..." onkeydown="handleSearchKey(event)">
+                    </div>
+                    <button class="btn btn-primary">+ New Issue</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-7xl mx-auto p-6 shadow-sm mb-6">
+
+            <!-- Container Div with tabs and issue counter  -->
+            <div class="container-div flex flex-col gap-4">
+
+                <!-- Three Tabs -->
+                <div class="p-6 shadow-sm rounded flex gap-3 bg-gray-100">
+                    <button id="tab-all" class="tab-btn active" onclick="switchTab('all')">All</button>
+                    <button id="tab-open" class="tab-btn" onclick="switchTab('open')">Open</button>
+                    <button id="tab-closed" class="tab-btn" onclick="switchTab('closed')">Closed</button>
+                </div>
+
+                <!-- Issue Number Bar -->
+                <div class="flex items-center justify-between p-6 shadow-sm rounded mb-6 bg-gray-100">
+
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                            <img src="assets/aperture.png" alt="" class="w-6 h-6">
+                        </div>
+
+                        <div class="flex flex-col">
+                            <p id="issue-count" class="font-bold">0 Issues</p>
+                            <p class="text-sm text-gray-400">Track and manage your project issues</p>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4 text-sm">
+                        
+                        <div class="flex items-center gap-1">
+                            <div class="circle green"></div>
+                            <span>Open</span>
+                        </div>
+
+                        <div class="flex items-center gap-1">
+                            <div class="circle purple"></div>
+                            <span>Closed</span>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div> 
+
+            <div id="empty-state" class="hidden text-center py-20">
+                <p class="text-gray-500 text-lg">No Issues Found</p>
+            </div>
+
+            <div id="issues-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Individual issues will be displayed here using javascript  -->
+            </div>
+        </main>
+
+        <!-- Popup modal will be displayed when the title of any issue is clicked  -->
+        <input type="checkbox" id="issue_modal" class="modal-toggle">
+
+        <div class="modal" role="dialog">
+        <div class="modal-box w-11/12 max-w-lg">
+
+            <div id="modal-content" class="mb-4"></div>
+
+            <div class="modal-action">
+            <label for="issue_modal" class="btn bg-indigo-600 hover:bg-indigo-700 text-white border-0 px-8">
+                Close
+            </label>
+            </div>
+
+        </div>
+
+        <label class="modal-backdrop" for="issue_modal"></label>
+        </div>        
+
+    </div> 
+    
+
     <script src="js/index.js"></script>
 </body>
 </html>
