@@ -285,10 +285,10 @@ const formatDateModal = (dateString) => {
 const getStatusIcon = (status) => {
   if (status === 'open') {
     // Green circle icon for open issues
-    return '<img src="../assets/open-status.png" alt="open status icon">';
+    return '<img src="./assets/open-status.png" alt="open status icon">';
   } else {
     // Purple checkmark icon for closed issues
-    return '<img src="../assets/closed-status.png" alt="icon for closed status"></img>';
+    return '<img src="./assets/closed-status.png" alt="icon for closed status"></img>';
   }
 };
 
